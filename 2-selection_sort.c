@@ -6,6 +6,7 @@
  * ascending order using the Selection sort algorithm
  * @array: array of unsorted integers
  * @size: the size of the array
+ * Return: Nothing.
 */
 void selection_sort(int *array, size_t size)
 {
@@ -23,11 +24,12 @@ void selection_sort(int *array, size_t size)
 			if (array[j] < array[current_minimum])
 				current_minimum = j;
 		}
-		if (current_minimum == i)
-			continue;
-		tmp = array[current_minimum];
-		array[current_minimum] = array[i];
-		array[i] = tmp;
-		print_array(array, size);
+		if (current_minimum != i)
+		{
+			tmp = array[current_minimum];
+			array[current_minimum] = array[i];
+			array[i] = tmp;
+			print_array(array, size);
+		}
 	}
 }
