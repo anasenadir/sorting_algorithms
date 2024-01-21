@@ -15,7 +15,7 @@ void selection_sort(int *array, size_t size)
 	if (array == NULL || size == 0)
 		return;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
 		current_minimum = i;
 		for (j = i + 1 ; j < size; j++)
