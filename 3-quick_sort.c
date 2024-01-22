@@ -93,7 +93,7 @@ void quick_s(int *array, int start, int end, int size)
 */
 void quick_sort(int *array, size_t size)
 {
-	if (array == NULL || size == 0)
+	if (array == NULL || size < 2)
 		return;
 	quick_s(array, 0, size, size);
 }
