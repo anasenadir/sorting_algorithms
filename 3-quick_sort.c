@@ -66,9 +66,6 @@ void quick_s(int *array, int start, int end, int size)
 		return;
 
 	pivot_index = partition(array, size, start, end);
-
-	if (pivot_index == -1)
-		return;
 	quick_s(array, start, pivot_index - 1, size);
 	quick_s(array, pivot_index + 1, end, size);
 }
