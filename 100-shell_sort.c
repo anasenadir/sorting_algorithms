@@ -28,13 +28,16 @@ void shell_sort(int *array, size_t size)
 
 	if (array == NULL || size < 2)
 		return;
-	gap = size / 2 - 1;
+
+
+	for (gap = 1; gap < (size / 3);)
+		gap = gap * 3 + 1;
 
 	swaped = 1;
 	while (swaped && gap >= 1)
 	{
 		swaped = 0;
-		for (i = 0; i < size - gap; i++)
+		for (i = 0; i + gap < size; i++)
 		{
 			if (array[i] > array[i + gap])
 			{
@@ -42,12 +45,15 @@ void shell_sort(int *array, size_t size)
 				swap(array + i, array + i + gap);
 			}
 		}
-		print_array(array, size);
+
 		if (gap > 1)
-			gap = gap / 2;
+			gap = gap / 3;
+
 
 		if (swaped == 0)
 			break;
+
+		print_array(array, size);
 	}
 
 }
