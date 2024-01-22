@@ -1,20 +1,17 @@
 #include "sort.h"
-#include <stdio.h>
 
 /**
  * swap - swap two items in the array
- * @array: the array
- * @f_ind: the index of the first item
- * @s_ind: the index of the second item
- *
+ * @ptr1: the first integer to swap.
+ * @ptr2: the second integer to swap.
 */
-void swap(int *array, int f_ind, int s_ind)
+void swap(int *ptr1, int *ptr2)
 {
 	int tmp;
 
-	tmp = array[f_ind];
-	array[f_ind] = array[s_ind];
-	array[s_ind] = tmp;
+	tmp = *ptr1;
+	*ptr1 = *ptr2;
+	*ptr2 = tmp;
 }
 
 /**
@@ -25,39 +22,30 @@ void swap(int *array, int f_ind, int s_ind)
  * @size: the size of the array
  * Return: the pivot index otherwise, -1
 */
-int partition(int *array, int start, int end, int size)
+int partition(int *array, size_t size, int start, int end)
 {
-	int pivot, i, j;
+	int *pivot, j, i;
 
-	pivot = array[start];
-	i = start;
-	j = end;
-
-	if (j == i + 1)
+	pivot = array + end;
+	j = i = start;
+	for (; i < end; i++)
 	{
-		if (array[i] > array[j])
-			swap(array, i, j);
-		return (-1);
-	}
-	while (j > i)
-	{
-		do {
-			i += 1;
-		} while (array[i] < pivot);
-
-		do {
-			j -= 1;
-		} while (array[j] > pivot);
-
-		if (j > i)
+		if (array[i] < *pivot)
 		{
-			swap(array, i, j);
-			print_array(array, size);
+			if (j < i)
+			{
+				swap(array + i, array + j);
+				print_array(array, size);
+			}
+			j++;
 		}
 	}
 
-	swap(array, j, start);
-	print_array(array, size);
+	if (array[j] > *pivot)
+	{
+		swap(array + j, pivot);
+		print_array(array, size);
+	}
 
 	return (j);
 }
@@ -77,7 +65,7 @@ void quick_s(int *array, int start, int end, int size)
 	if (start >= end)
 		return;
 
-	pivot_index = partition(array, start, end, size);
+	pivot_index = partition(array, size, start, end);
 
 	if (pivot_index == -1)
 		return;
@@ -95,5 +83,5 @@ void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;
-	quick_s(array, 0, size, size);
+	quick_s(array, 0, size - 1, size);
 }
