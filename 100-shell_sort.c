@@ -17,12 +17,9 @@ void swap(int *ptr1, int *ptr2)
 
 void shell_sort(int *array, size_t size)
 {
-    int gap, i, swaped;
+    size_t gap, i, swaped;
 
-    printf("%lu\n", size);
     gap = size / 2 - 1;
-
-    printf("%d\n", gap);
 
     swaped = 1;
     while (swaped && gap >= 1)
@@ -36,9 +33,7 @@ void shell_sort(int *array, size_t size)
                 swap(array + i, array + i + gap);
             }
         }
-        printf("%d\n", swaped);
         print_array (array, size);
-        printf("=====================================\n");
         if (gap > 1) 
             gap = gap / 2;
         
