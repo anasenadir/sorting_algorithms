@@ -54,9 +54,9 @@ void merge_s(int *array, int *buff, size_t start, size_t end)
 	if (end - start > 1)
 	{
 		mid = (end + start) / 2;
-		merge_sort_recursive(array, buff, start, mid);
-		merge_sort_recursive(array, buff, mid, end);
-		merge_subarr(array, buff, start, mid, end);
+		merge_s(array, buff, start, mid);
+		merge_s(array, buff, mid, end);
+		merging(array, buff, start, mid, end);
 	}
 }
 
