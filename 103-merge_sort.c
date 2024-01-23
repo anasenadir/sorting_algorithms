@@ -24,7 +24,7 @@ void merging(int *array, int *buff, size_t start, size_t mid,
 
 	for (i = start, j = mid; i < mid && j < end; k++)
 		buff[k] = (array[i] < array[j]) ? array[i++] : array[j++];
-	
+
 	while (i < mid)
 		buff[k++] = array[i++];
 
