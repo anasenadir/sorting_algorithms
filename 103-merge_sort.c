@@ -13,7 +13,8 @@
 */
 void merging(int *array, size_t start, size_t mid, size_t end)
 {
-	int *result, i, j, k;
+	int *result;
+	size_t i, j, k;
 
 	i = start;
 	j = mid + 1;
